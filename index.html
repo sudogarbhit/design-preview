@@ -44,6 +44,9 @@
         @keyframes circle-chart-fill {
             to { stroke-dasharray: 0 100; }
         }
+        @keyframes growBarHeight {
+            from { height: 0; }
+        }
     </style>
 </head>
 <body class="bg-brand-light text-brand-black font-sans antialiased selection:bg-brand-blue selection:text-white">
@@ -64,7 +67,7 @@
                 What Parents Are Saying about the Most <span class="text-brand-light underline decoration-4 decoration-white/30 underline-offset-8">Cutting-Edge School</span> of the 21st Century
             </h1>
             <p class="text-lg md:text-xl text-brand-light font-serif max-w-2xl mx-auto leading-relaxed opacity-95">
-                They left traditional school behind in hopes for something better. What they found was even better than they expected. Here’s their raw experience, in their own words.
+                They left traditional school behind. What they found was even better than they hoped.
             </p>
         </div>
     </header>
@@ -94,7 +97,7 @@
                         “I've never heard my child say he loves school before — but now he says it all the time.”
                     </p>
                     <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                        <span>New Parent</span> • <span>Alpha Santa Barbara</span> • <span>Grade 4-5</span>
+                        <span>Alpha Santa Barbara</span> • <span>Grade 4-5</span>
                     </div>
                 </div>
 
@@ -102,7 +105,7 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
                         <p class="text-brand-black mb-4">“I ask everyday if he would like to go back to public school and it is a BIG NO. He loves Alpha and his guides!”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">New Parent | Alpha Chantilly | Grade 2-3</p>
+                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Chantilly | Grade 2-3</p>
                     </div>
 
                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
@@ -112,12 +115,12 @@
 
                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
                         <p class="text-brand-black mb-4">“My child would not even consider going anywhere else. She loves Alpha.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Returning Parent | Alpha Austin | Grade 6-8</p>
+                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Austin | Grade 6-8</p>
                     </div>
 
                      <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
                         <p class="text-brand-black mb-4">“She loves this school. I have asked if she wishes to attend a regular school district and the answer is no. I love the school myself and how much my child has grown over the years.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Returning Parent | Alpha Brownsville | Grade 4-5</p>
+                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Brownsville | Grade 4-5</p>
                     </div>
                 </div>
 
@@ -126,7 +129,7 @@
                     <p class="text-brand-black leading-relaxed mb-4">
                         “[Alpha] has been a truly transformational experience for all of us. Our son comes home happy, with a clear sense of satisfaction from a well-balanced, inspiring day. There is simply no comparison to the experience we had at our previous school... At the same time, he has advanced one to two grade levels beyond his age since the start of this session. I admit I was initially skeptical of these claims... but I am now confident that his understanding is not only solid—it is stronger than before.”
                     </p>
-                    <p class="text-xs font-bold text-gray-500 uppercase">New Parent | Alpha Palm Beach | Grade 2-3</p>
+                    <p class="text-xs font-bold text-gray-500 uppercase">Alpha Palm Beach | Grade 2-3</p>
                 </div>
 
                 <!-- More Quotes Grid -->
@@ -179,7 +182,7 @@
                             “The workshops and Test2Pass events have been fantastic.”
                         </p>
                         <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                            <span>New Parent</span> • <span>Alpha New York</span> • <span>Grade 4-5</span>
+                            <span>Alpha New York</span> • <span>Grade 4-5</span>
                         </div>
                     </div>
 
@@ -208,7 +211,7 @@
                          <p class="text-brand-black leading-relaxed mb-4">
                             “We were very motivated to get our son out of his previous school situation... We were mostly concerned about his academics but were blown away by the life skills portion of the program. He comes back tired, happy and motivated to get back after it the next day. I can not overstate how impressed I am with the total change in my child.”
                         </p>
-                        <p class="text-xs font-bold text-gray-500 uppercase">New Parent | Alpha Santa Barbara | Grade 4-5</p>
+                        <p class="text-xs font-bold text-gray-500 uppercase">Alpha Santa Barbara | Grade 4-5</p>
                     </div>
 
                      <!-- More Quotes Grid -->
@@ -237,10 +240,10 @@
 
                 </div>
 
-                <!-- Right: Stats (Bar Chart) -->
+                <!-- Right: Stats (Coded) -->
                  <div class="lg:w-1/3">
                     <div class="sticky top-10 bg-brand-blue text-white p-6 rounded-2xl shadow-xl relative overflow-hidden flex flex-col">
-                        <h3 class="text-lg font-bold text-center mb-6 text-brand-light opacity-90">Unlocking Hidden Potential</h3>
+                        <h3 class="text-xl font-bold text-center mb-6 text-brand-light opacity-90">Limitless Potential. Unlocked.</h3>
                         
                         <div class="flex-1 flex items-end justify-center gap-4 px-2 mb-6">
                             <!-- Bar 1 -->
@@ -260,14 +263,12 @@
                             </div>
                         </div>
 
-                        <div class="flex justify-between gap-2 text-center border-t border-white/20 pt-4">
+                        <div class="flex justify-between gap-4 text-center border-t border-white/20 pt-4">
                             <div class="w-1/2">
-                                <p class="text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-white inline-block px-2 py-0.5 rounded mb-1">Workshops</p>
-                                <p class="text-xs font-medium text-brand-light leading-snug">Impressed with life skills</p>
+                                <p class="text-sm font-medium text-brand-light leading-snug">Were impressed with life skills workshops.</p>
                             </div>
                             <div class="w-1/2">
-                                <p class="text-[10px] font-bold uppercase tracking-wider text-brand-blue bg-white inline-block px-2 py-0.5 rounded mb-1">Growth</p>
-                                <p class="text-xs font-medium text-brand-light leading-snug">Accomplished the "impossible"</p>
+                                <p class="text-sm font-medium text-brand-light leading-snug">Saw their child do something they didn't think was possible.</p>
                             </div>
                         </div>
                      </div>
@@ -286,21 +287,21 @@
                     “Is your experience at Alpha exceeding the expectations you had when you enrolled?”
                 </h2>
 
-                <!-- Top Quote (Blue) -->
+                <!-- Top Quote (Blue) - SWAPPED -->
                 <div class="bg-brand-blue p-8 rounded-2xl shadow-lg text-white transform hover:scale-[1.01] transition-transform">
                     <p class="text-2xl font-serif font-medium leading-relaxed mb-6">
-                        “We thought it would be GREAT, but it has far exceeded that for our family. It has been LIFE CHANGING and I don't think there has been a week that has passed that I haven't found myself in tears of utter gratitude. THANK YOU!!”
+                        “We came in with high expectations and the experience has 100% beaten them. Our child is loving school and learning so much.”
                     </p>
                     <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                        <span>New Parent</span> • <span>Alpha Scottsdale</span> • <span>Grade 2-3, 4-5</span>
+                        <span>Alpha New York</span> • <span>Grade 4-5</span>
                     </div>
                 </div>
 
                 <!-- Quotes Grid -->
                  <div class="grid md:grid-cols-2 gap-6">
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“We came in with high expectations and the experience has 100% beaten them. Our child is loving school and learning so much.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha New York | Grade 4-5</p>
+                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
+                        <p class="text-brand-black mb-4">“We thought it would be GREAT, but it has far exceeded that for our family. It has been LIFE CHANGING and I don't think there has been a week that has passed that I haven't found myself in tears of utter gratitude. THANK YOU!!”</p>
+                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Scottsdale | Grade 2-3, 4-5</p>
                     </div>
                      <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
                         <p class="text-brand-black mb-4">“My kids are truly thriving, feeling self motivated and growing in their independence and creativity.”</p>
@@ -321,7 +322,7 @@
                      <p class="text-brand-black leading-relaxed mb-4">
                         “It may sound silly... but I just wanted my son to attend a school that he enjoys. He spent the first half of his childhood in a constant state of anxiety... Our public school is rated #1 in Virginia and it is an amazing school, but just not for Grayson... That first day when I picked him up he was BEAMING and said 'Mommy I love school so much, I didn't want to leave!'... Everything he is learning, doing, experiencing, and mastering is icing on the cake.”
                     </p>
-                    <p class="text-xs font-bold text-gray-500 uppercase">New Parent | Alpha Chantilly | Grade 2-3</p>
+                    <p class="text-xs font-bold text-gray-500 uppercase">Alpha Chantilly | Grade 2-3</p>
                 </div>
 
                 <!-- More Quotes Grid -->
