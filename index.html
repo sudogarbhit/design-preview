@@ -1,392 +1,893 @@
-<!DOCTYPE html>
+<!--
+  templateType: "page"
+  isAvailableForNewContent: true
+-->
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inside Alpha School: Parent Reviews</title>
+    <title>Alpha Summer Camp | The Only School Kids Love More than Vacation</title>
+    <meta name="description" content="Alpha Summer Camp is a full week inside the Alpha model. Experience the school kids love more than vacation.">
+    <link rel="shortcut icon" href="https://go.alpha.school/hubfs/Landing%20Pages/Logos/Alpha%20Favicon.png" />
+
+    <!-- TAILWIND CSS & FONTS SETUP -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+      
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        brand: {
-                            blue: '#0070F3',
-                            light: '#F2FBFF',
-                            white: '#FFFFFF',
-                            black: '#000000'
-                        }
+                        alphaBlue: '#1e00ff',
+                        alphaDark: '#1500b3',
+                        alphaLight: '#e6e6ff',
+                        lavender: '#f5f3ff',
+                        summerYellow: '#F59E0B',
+                        skyBlue: '#0EA5E9',
+                        summerGreen: '#22C55E',
+                        summerCoral: '#F97316',
+                        warmCream: '#FFFBEB',
+                        skyLight: '#E0F2FE',
+                        mintLight: '#D1FAE5',
+                        summerSky: '#0284C7',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Merriweather', 'serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'summer': '0 12px 40px -12px rgba(245,158,11,0.2)',
                     }
                 }
             }
         }
     </script>
     <style>
-        .quote-card {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        html { scroll-behavior: smooth; }
+        .serif-italic {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
         }
-        .quote-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-        /* Circular Progress Animation */
-        .circle-chart__circle {
-            animation: circle-chart-fill 2s reverse; /* 1 */ 
-            transform: rotate(-90deg); /* 2 */
-            transform-origin: center; /* 3 */
-        }
-        @keyframes circle-chart-fill {
-            to { stroke-dasharray: 0 100; }
-        }
-        @keyframes growBarHeight {
-            from { height: 0; }
+        .city-pill:hover {
+            border-color: #0EA5E9;
+            color: #0284C7;
+            background-color: #E0F2FE;
         }
     </style>
-</head>
-<body class="bg-brand-light text-brand-black font-sans antialiased selection:bg-brand-blue selection:text-white">
-
-    <!-- Hero Section -->
-    <header class="bg-brand-blue text-white pt-24 pb-28 px-6 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-            <i class="fa-solid fa-graduation-cap absolute -top-10 -right-10 text-[300px]"></i>
-            <i class="fa-solid fa-rocket absolute bottom-10 -left-10 text-[200px]"></i>
-        </div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <!-- More pronounced badge -->
-            <div class="inline-block bg-white px-6 py-2 rounded-full text-sm font-extrabold tracking-widest uppercase mb-8 text-brand-blue shadow-lg transform hover:scale-105 transition-transform duration-300">
-                Inside Alpha School
+    
+    {{ standard_header_includes }}
+  </head>
+  <body class="bg-white text-slate-900 font-sans antialiased">
+    
+    <!-- NAVIGATION – white/light bg, brand blue for CTAs -->
+    <nav id="main-nav" class="fixed w-full z-50 top-0 left-0 bg-white/95 backdrop-blur-sm shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-1">
+                <img src="https://go.alpha.school/hubfs/Landing%20Pages/Logos/Alpha-Bird-Icon-Only.png" alt="Alpha Logo" class="w-20 h-20 object-contain -mr-1" style="filter: brightness(0) saturate(100%) invert(12%) sepia(87%) saturate(5838%) hue-rotate(244deg) brightness(87%) contrast(144%);" />
+                <span class="text-slate-900 font-bold text-sm tracking-widest uppercase mt-2"><span class="font-extrabold">Alpha</span> Summer Camp</span>
+            </a>
+            <div class="hidden md:block">
+                <a href="#locations" class="px-6 py-2.5 bg-alphaBlue text-white text-xs font-bold rounded-full hover:opacity-90 transition-all uppercase tracking-wide">
+                    Find Your City
+                </a>
             </div>
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-8 tracking-tight leading-tight">
-                End of 2025 Parent Survey Results 
-            </h1>
-            <p class="text-lg md:text-xl text-brand-light font-serif max-w-2xl mx-auto leading-relaxed opacity-95">
-                They left traditional school behind. What they found was even better than they hoped.
-            </p>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION – Split layout -->
+    <header class="relative min-h-[90vh] flex flex-col lg:flex-row overflow-hidden">
+        <!-- Left: gradient + copy -->
+        <div class="relative flex-1 flex flex-col justify-center bg-gradient-to-br from-sky-500 via-sky-400 to-amber-300 text-white pt-28 pb-16 lg:pt-32 lg:pb-24 lg:pr-0 px-6">
+            <div class="absolute top-0 right-0 w-96 h-96 bg-amber-200/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="max-w-xl mx-auto lg:mx-0 lg:max-w-2xl relative z-10 text-center lg:text-left">
+                <div class="inline-flex items-center px-3 py-1 rounded-full border border-amber-200 bg-white/10 backdrop-blur-md text-amber-100 text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase mb-6">
+                    Alpha School 2026 Summer Camp
+                </div>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[0.95] tracking-tight">
+                    The Only School<br>
+                    Kids Love More<br>
+                    Than Vacation.
+                    <span class="block mt-4 serif-italic font-normal text-2xl md:text-3xl lg:text-4xl text-white/95">Now in Summer Camp Form.</span>
+                </h1>
+                <p class="text-base md:text-lg text-white/90 mt-6 font-medium leading-relaxed">
+                    90% of Alpha students say they "love school." This summer, your kid can find out why.
+                </p>
+                <div class="mt-10">
+                    <a href="#locations" class="inline-flex items-center px-10 py-4 bg-summerYellow text-slate-900 font-bold rounded-full text-lg hover:bg-amber-400 transition-all hover:scale-[1.02] shadow-lg group">
+                        Come Experience Alpha
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Right: hero image -->
+        <div class="relative flex-1 min-h-[50vh] lg:min-h-[90vh]">
+            <img src="img/Kids at outdoor summer camp in nature.png" alt="Kids at outdoor summer camp in nature" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-r from-sky-500/40 via-transparent to-transparent lg:from-sky-600/30"></div>
         </div>
     </header>
 
-    <!-- Intro Text -->
-    <div class="max-w-4xl mx-auto -mt-12 px-6 relative z-20 mb-20">
-        <div class="bg-white p-10 rounded-2xl shadow-xl border-t-8 border-brand-blue">
-            <p class="text-brand-black text-lg leading-relaxed font-medium">
-                The following are direct quotes from current Alpha families who filled out a routine “end-of-session” parent survey. Although we encourage all parents to fill out the survey, it is 100% optional. The only thing we require is <span class="font-bold text-brand-blue">brutal, unapologetic honesty</span> regarding their experience with Alpha. Here’s their experience, in their own words.
-            </p>
-        </div>
-    </div>
-
-    <!-- Section 1: Love School -->
-    <section class="max-w-7xl mx-auto px-6 py-12">
-        <div class="flex flex-col lg:flex-row gap-12">
-            
-            <!-- Left: Quotes -->
-            <div class="lg:w-2/3 space-y-8">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-black text-left mb-8">
-                    “Does your child genuinely love school?”
-                </h2>
-
-                <!-- Top Quote (Blue) -->
-                <div class="bg-brand-blue p-8 rounded-2xl shadow-lg text-white transform hover:scale-[1.01] transition-transform">
-                    <p class="text-2xl font-serif font-medium leading-relaxed mb-6">
-                        “I've never heard my child say he loves school before — but now he says it all the time.”
-                    </p>
-                    <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                        <span>Alpha Santa Barbara</span> • <span>Grade 4-5</span>
-                    </div>
-                </div>
-
-                <!-- White Quotes Grid -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“I ask everyday if he would like to go back to public school and it is a BIG NO. He loves Alpha and his guides!”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Chantilly | Grade 2-3</p>
-                    </div>
-
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Our kids would 100% rather be at school than on vacation and do not even want breaks. They LOVE school — both of them.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Scottsdale | Grade 2-3, 4-5</p>
-                    </div>
-
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“My child would not even consider going anywhere else. She loves Alpha.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Austin | Grade 6-8</p>
-                    </div>
-
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“She loves this school. I have asked if she wishes to attend a regular school district and the answer is no. I love the school myself and how much my child has grown over the years.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Brownsville | Grade 4-5</p>
-                    </div>
-                </div>
-
-                <!-- Long Story Quote (Full Width) -->
-                <div class="quote-card bg-white p-8 rounded-xl shadow-sm border-l-4 border-brand-blue">
-                    <p class="text-brand-black leading-relaxed mb-4">
-                        “[Alpha] has been a truly transformational experience for all of us. Our son comes home happy, with a clear sense of satisfaction from a well-balanced, inspiring day. There is simply no comparison to the experience we had at our previous school... At the same time, he has advanced one to two grade levels beyond his age since the start of this session. I admit I was initially skeptical of these claims... but I am now confident that his understanding is not only solid—it is stronger than before.”
-                    </p>
-                    <p class="text-xs font-bold text-gray-500 uppercase">Alpha Palm Beach | Grade 2-3</p>
-                </div>
-
-                <!-- More Quotes Grid -->
-                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Oh, he loves school. When asked on New Year’s what his favorite experience was in 2025, he said Alpha School.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Santa Barbara | Grade 6–8</p>
-                    </div>
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“He is motivated and loves going to school every day. His guides are supportive and push him to realize his potential, which is amazing!”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade 2-3</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“She loves school, her friends, and especially her guide.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Austin | Grade K-1</p>
-                    </div>
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“My child is happy and does not want to consider any other schools.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Austin | Grade 6-8</p>
-                    </div>
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10 md:col-span-2">
-                        <p class="text-brand-black mb-4 text-center text-lg font-medium">“He loves school more than ever!”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase text-center">Alpha Miami | Grade K-1</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Right: Stats Graphic (Image) -->
-            <div class="lg:w-1/3">
-                <img src="https://alpha.school/wp-content/uploads/2026/01/infographics-1.png" alt="Love School Stats" class="sticky top-10 w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-300">
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 2: Life Skills -->
-    <section class="bg-white py-20 border-y border-brand-blue/10">
+    <!-- "WHAT IF" SECTION -->
+    <section class="py-28 bg-warmCream overflow-hidden">
         <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="flex flex-col lg:flex-row gap-12">
-                <!-- Left: Quotes -->
-                <div class="lg:w-2/3 space-y-8">
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-brand-black text-left mb-8">
-                        “Were you impressed with the life skills workshops and Test2Pass events?”
-                    </h2>
+            <!-- Two-column layout: copy + image left, features right -->
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-20 items-start">
 
-                    <!-- Top Quote (Blue) -->
-                    <div class="bg-brand-blue p-8 rounded-2xl shadow-lg text-white transform hover:scale-[1.01] transition-transform">
-                        <p class="text-2xl font-serif font-medium leading-relaxed mb-6">
-                            “The workshops and Test2Pass events have been fantastic.”
-                        </p>
-                        <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                            <span>Alpha New York</span> • <span>Grade 4-5</span>
+                <!-- Left: Copy + lifestyle image -->
+                <div class="lg:sticky lg:top-32 space-y-10">
+                    <div>
+                        <div class="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-5">Your Test Drive Starts Here</div>
+                        <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-8 serif-italic leading-[1.1]">What if you could try Alpha School for one week?</h2>
+                        <div class="space-y-5 text-base text-slate-600 leading-relaxed mb-10">
+                            <p><span class="font-bold text-slate-900">This summer, you can.</span> At Alpha Summer Camp, your kid will experience one full week (or more) inside the Alpha model.</p>
+                            <p>Maybe you've been following Alpha for a while. Maybe you've seen us on the Today Show, chatted with current parents, or watched every Alpha School video that exists.</p>
+                            <p>Whatever brought you here — welcome. This is the perfect opportunity to answer the question that matters most:</p>
                         </div>
+                    <div class="relative pl-6 border-l-2 border-sky-500">
+                        <p class="text-xl font-bold text-slate-900 serif-italic">"Would Alpha work for <em>my</em> kid?"</p>
                     </div>
-
-                    <!-- Quotes Grid -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“Totally blown away at how these kids are blossoming.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha San Francisco | Grade 6-8</p>
-                        </div>
-                         <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“[Life skills workshops] CANNOT be improved because they are totally awesome!! The guides are rock stars!!! They always go above and beyond!!!!”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Palm Beach | Pre-K - Gr 5</p>
-                        </div>
-                         <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“I was super impressed with all of the life skills workshops.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Chantilly | Grade 2-3</p>
-                        </div>
-                        <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“The life skills workshops are wonderful! I wouldn’t change a thing!”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Scottsdale | Grade 4-5</p>
-                        </div>
-                    </div>
-
-                    <!-- Long Quote -->
-                    <div class="quote-card bg-white p-8 rounded-xl shadow-sm border-l-4 border-brand-blue">
-                         <p class="text-brand-black leading-relaxed mb-4">
-                            “We were very motivated to get our son out of his previous school situation... We were mostly concerned about his academics but were blown away by the life skills portion of the program. He comes back tired, happy and motivated to get back after it the next day. I can not overstate how impressed I am with the total change in my child.”
-                        </p>
-                        <p class="text-xs font-bold text-gray-500 uppercase">Alpha Santa Barbara | Grade 4-5</p>
-                    </div>
-
-                     <!-- More Quotes Grid -->
-                    <div class="grid md:grid-cols-2 gap-6">
-                         <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“We were extremely impressed... The feats the children accomplished were mind-blowing, and I have no doubt that the lessons they took away will last a lifetime.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Palm Beach | Grade 2-3</p>
-                        </div>
-                         <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“Life skill workshops and Test2Pass events have been amazing.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha San Francisco | Grade K-1</p>
-                        </div>
-                        <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“The life skills and Test2Pass have been great. We have been blown away with what the kids have accomplished.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Palm Beach | Grade 2-3</p>
-                        </div>
-                         <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                            <p class="text-brand-black mb-4">“It was truly impressive to see what kids can do when they are encouraged to believe in themselves. We are proud to belong to the Alpha Miami Family.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade 2-3</p>
-                        </div>
-                        <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10 md:col-span-2 text-center">
-                            <p class="text-brand-black mb-2 text-lg">“The life skills exceeded our expectations.”</p>
-                            <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade 4-5</p>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Right: Stats (Coded) -->
-                 <div class="lg:w-1/3">
-                    <div class="sticky top-10 bg-brand-blue text-white p-6 rounded-2xl shadow-xl relative overflow-hidden flex flex-col">
-                        <h3 class="text-xl font-bold text-center mb-6 text-brand-light opacity-90">Limitless Potential. Unlocked.</h3>
-                        
-                        <div class="flex-1 flex items-end justify-center gap-4 px-2 mb-6">
-                            <!-- Bar 1 -->
-                            <div class="flex flex-col items-center w-1/2 h-40 justify-end group">
-                                <span class="text-2xl font-extrabold mb-2 text-white">85%</span>
-                                <div class="w-full bg-white/10 rounded-t-lg relative h-full">
-                                    <div class="absolute bottom-0 left-0 w-full bg-white rounded-t-lg shadow-[0_0_15px_rgba(255,255,255,0.4)]" style="height: 85%; animation: growBarHeight 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Bar 2 -->
-                             <div class="flex flex-col items-center w-1/2 h-40 justify-end group">
-                                <span class="text-2xl font-extrabold mb-2 text-white">85%</span>
-                                <div class="w-full bg-white/10 rounded-t-lg relative h-full">
-                                     <div class="absolute bottom-0 left-0 w-full bg-brand-light/90 rounded-t-lg shadow-[0_0_15px_rgba(255,255,255,0.4)]" style="height: 85%; animation: growBarHeight 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards; animation-delay: 0.2s;"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between gap-4 text-center border-t border-white/20 pt-4">
-                            <div class="w-1/2">
-                                <p class="text-sm font-medium text-brand-light leading-snug">Were impressed with life skills workshops.</p>
-                            </div>
-                            <div class="w-1/2">
-                                <p class="text-sm font-medium text-brand-light leading-snug">Saw their child do something they didn't think was possible.</p>
-                            </div>
-                        </div>
-                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 3: Exceeding Expectations -->
-    <section class="max-w-7xl mx-auto px-6 py-20">
-        <div class="flex flex-col lg:flex-row gap-12">
-            
-            <!-- Left: Quotes -->
-            <div class="lg:w-2/3 space-y-8">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-brand-black text-left mb-8">
-                    “Is your experience at Alpha exceeding the expectations you had when you enrolled?”
-                </h2>
-
-                <!-- Top Quote (Blue) - SWAPPED -->
-                <div class="bg-brand-blue p-8 rounded-2xl shadow-lg text-white transform hover:scale-[1.01] transition-transform">
-                    <p class="text-2xl font-serif font-medium leading-relaxed mb-6">
-                        “We came in with high expectations and the experience has 100% beaten them. Our child is loving school and learning so much.”
-                    </p>
-                    <div class="flex items-center gap-2 text-sm text-brand-light font-bold uppercase tracking-wider opacity-90">
-                        <span>Alpha New York</span> • <span>Grade 4-5</span>
                     </div>
                 </div>
 
-                <!-- Quotes Grid -->
-                 <div class="grid md:grid-cols-2 gap-6">
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“We thought it would be GREAT, but it has far exceeded that for our family. It has been LIFE CHANGING and I don't think there has been a week that has passed that I haven't found myself in tears of utter gratitude. THANK YOU!!”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Scottsdale | Grade 2-3, 4-5</p>
+                <!-- Right: Feature cards stacked -->
+                <div class="space-y-5">
+                    <!-- Card 1 -->
+                    <div class="group flex gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-sky-300 hover:shadow-[0_12px_40px_-12px_rgba(14,165,233,0.1)] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="target" class="w-6 h-6 text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">Personalized Mastery</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Learn personalized, mastery-based, AI-powered academics that meet them at their exact reading and math level.</p>
+                        </div>
                     </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“My kids are truly thriving, feeling self motivated and growing in their independence and creativity.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Fortworth | Gr K-1, 4-5</p>
-                    </div>
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“The guides are beyond any expectation I could have had. The care, concern, and effort... is honestly emotional.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Scottsdale | Grade 4-5</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“I am seeing my child emerge socially more and more and I feel that her academic success is being supported.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha New York | Grade K-1</p>
-                    </div>
-                </div>
 
-                <!-- Long Story Quote -->
-                <div class="quote-card bg-white p-8 rounded-xl shadow-sm border-l-4 border-brand-blue">
-                     <p class="text-brand-black leading-relaxed mb-4">
-                        “It may sound silly... but I just wanted my son to attend a school that he enjoys. He spent the first half of his childhood in a constant state of anxiety... Our public school is rated #1 in Virginia and it is an amazing school, but just not for Grayson... That first day when I picked him up he was BEAMING and said 'Mommy I love school so much, I didn't want to leave!'... Everything he is learning, doing, experiencing, and mastering is icing on the cake.”
-                    </p>
-                    <p class="text-xs font-bold text-gray-500 uppercase">Alpha Chantilly | Grade 2-3</p>
-                </div>
+                    <!-- Card 2 -->
+                    <div class="group flex gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-amber-200 hover:shadow-[0_12px_40px_-12px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-sky-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="zap" class="w-6 h-6 text-sky-600"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1.5 group-hover:text-sky-600 transition-colors">Done by 11 AM</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Finish all academics by 11 AM. Then spend the afternoon in team-based workshops building life skills through exciting activities.</p>
+                        </div>
+                    </div>
 
-                <!-- More Quotes Grid -->
-                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“His participation in outdoor adventures is far exceeding our expectations. He has shown tremendous courage...”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Santa Barbara | Grade 4-5</p>
+                    <!-- Card 3 -->
+                    <div class="group flex gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-summerGreen/50 hover:shadow-[0_12px_40px_-12px_rgba(34,197,94,0.1)] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="compass" class="w-6 h-6 text-summerGreen"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1.5 group-hover:text-summerGreen transition-colors">World-Class Guides</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Connect with our guides, who will mentor and motivate them to unleash their full potential.</p>
+                        </div>
                     </div>
-                    <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“This session was amazing and felt like kids were truly pushing the limits of their own growth.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade 2-3</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Yes, Alpha has exceeded my highest expectations and then some. My kids are back to LOVING school and are super motivated.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha San Francisco | Gr 2-3, 6-8</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“The exceeding expectations is more in the overall confidence building, social emotional strengths and personal satisfaction we see in our child...”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha New York | Grade 2-3</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Yes, our experience at Alpha has definitely exceeded our expectations. Our son is growing both academically and personally...”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Austin | Grade 4-5</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“My child is genuinely thriving... The guides at Alpha School have worked their magic and helped my child develop a growth mindset...”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Lake Forest | Grade 2-3</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Every time Alpha says it is going to do something... it consistently exceeds what was imagined or expected in terms of quality, scale, and professionalism.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade 6-8</p>
-                    </div>
-                     <div class="quote-card bg-white p-6 rounded-xl shadow-sm border border-brand-blue/10">
-                        <p class="text-brand-black mb-4">“Absolutely. Alpha has exceeded our expectations in every way. The guides’ patience, energy, and commitment... is truly exceptional.”</p>
-                        <p class="text-xs font-bold text-brand-blue uppercase">Alpha Miami | Grade K-1</p>
+
+                    <!-- Card 4 -->
+                    <div class="group flex gap-5 p-6 rounded-2xl bg-white border border-slate-200 hover:border-summerCoral/50 hover:shadow-[0_12px_40px_-12px_rgba(249,115,22,0.12)] transition-all duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                            <i data-lucide="heart" class="w-6 h-6 text-summerCoral"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-900 mb-1.5 group-hover:text-summerCoral transition-colors">Love School</h3>
+                            <p class="text-sm text-slate-500 leading-relaxed">Experience firsthand why over 40% of Alpha students say they would rather go to school than go on vacation.</p>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
-            <!-- Right: Stats Graphic (Image) -->
-            <div class="lg:w-1/3">
-                <img src="https://alpha.school/wp-content/uploads/2026/01/infographics4.png" alt="Exceeding Expectations Stats" class="sticky top-10 w-full h-auto rounded-3xl shadow-2xl hover:scale-[1.02] transition-transform duration-300">
-            </div>
         </div>
     </section>
 
-    <!-- Final CTA Section -->
-    <section class="bg-brand-blue text-white py-24 text-center px-6">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl md:text-5xl font-extrabold mb-8 tracking-tight">Want to learn more?</h2>
-            <p class="text-xl text-brand-light mb-12 max-w-2xl mx-auto">See for yourself why families are calling Alpha a "life changing" experience.</p>
-            <a href="https://alpha.school/admission/" class="inline-block bg-white text-brand-blue font-extrabold py-5 px-10 rounded-full text-xl hover:bg-brand-light transform hover:scale-105 transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
-                Apply for your child's Shadow Day today
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-brand-b text-white py-12 text-center border-t border-white/10">
+    <!-- STATS BAND 1 – outcomes: 90%, 2 hrs, Top 1–2% (placed after What If) -->
+    <section class="py-12 md:py-16 bg-sky-50 border-y border-sky-100">
         <div class="max-w-4xl mx-auto px-6">
-            <p class="text-gray-500 text-sm opacity-80">© 2026 Alpha School. All rights reserved.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="heart" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">90%</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Say "I Love School"</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="clock" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">2 hrs</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Academics Per Day</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="award" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">Top 1–2%</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Nationally on MAP</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEE IT IN ACTION – Video section -->
+    <section class="py-28 bg-white overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <div class="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">See it in action</div>
+            <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4 serif-italic">One week. See why.</h2>
+            <p class="text-slate-500 text-lg mb-12 max-w-xl mx-auto">Watch what a day at Alpha Summer Camp looks like.</p>
+            <div class="relative group">
+                <div class="absolute -inset-2 bg-gradient-to-r from-amber-200 to-sky-300 rounded-[2rem] blur-lg opacity-30 group-hover:opacity-50 transition duration-500"></div>
+                <div class="relative rounded-[2rem] overflow-hidden shadow-2xl border border-sky-100 bg-slate-900">
+                    <div class="aspect-video w-full">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/cmohHtn1Em8?si=AlphaSummerCamp" title="Alpha Summer Camp Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS BAND 2 – camp scope: 30 Cities, 7 Weeks, K–8 (placed before Locations) -->
+    <section class="py-12 md:py-16 bg-white border-y border-sky-100">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="map" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">30</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Cities</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="calendar-days" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">7</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Weeks</p>
+                </div>
+                <div class="flex flex-col items-center text-center">
+                    <i data-lucide="graduation-cap" class="w-8 h-8 text-sky-500 mb-2"></i>
+                    <div class="text-2xl md:text-3xl font-bold text-sky-600 serif-italic leading-none">K–8</div>
+                    <p class="text-[10px] md:text-[11px] font-bold text-slate-500 uppercase tracking-[0.15em] mt-1">Ages</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATIONS GRID SECTION -->
+    <section id="locations" class="py-28 relative bg-sky-50/80 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] bg-sky-200/30 rounded-full blur-[180px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <!-- Photo strip: camp / city atmosphere -->
+            <div class="grid grid-cols-3 gap-3 mb-12 rounded-2xl overflow-hidden max-h-[180px]">
+                <img src="img/Summer camp outdoors..png" alt="Summer camp outdoors" class="w-full h-full object-cover" />
+                <img src="img/Kids at camp activity..png" alt="Kids at camp activity" class="w-full h-full object-cover" />
+                <img src="img/Camp workshop.png" alt="Camp workshop" class="w-full h-full object-cover" />
+            </div>
+            <div class="text-center mb-14">
+                <div class="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">LOCATIONS</div>
+                <h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 serif-italic">30 cities. Pick yours.</h2>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">Select a city, choose your weeks, and reserve your spot.</p>
+            </div>
+
+            <!-- STEP 1: City Selection -->
+            <div id="city-selector">
+                <!-- Filter bar -->
+                <div class="flex flex-col sm:flex-row gap-3 mb-8">
+                    <!-- Search -->
+                    <div class="relative flex-1">
+                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+                        <input id="city-search" type="text" placeholder="Search by city or state..." class="w-full pl-11 pr-4 py-3.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 shadow-sm transition-all" />
+                    </div>
+                    <!-- State dropdown -->
+                    <div class="relative shrink-0">
+                        <select id="state-filter" onchange="filterByState(this.value)" class="appearance-none w-full sm:w-52 pl-4 pr-10 py-3.5 rounded-xl border border-slate-200 bg-white text-sm font-medium text-slate-900 focus:outline-none focus:ring-2 focus:ring-sky-200 focus:border-sky-400 shadow-sm cursor-pointer transition-all">
+                            <option value="All">All States</option>
+                        </select>
+                        <i data-lucide="chevron-down" class="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <!-- City Grid -->
+                <div id="city-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"></div>
+
+                <div id="no-results" class="hidden text-center py-16">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="search-x" class="w-5 h-5 text-slate-400"></i>
+                    </div>
+                    <p class="font-medium text-slate-400">No cities found</p>
+                </div>
+            </div>
+
+            <!-- STEP 2: Week Selection (hidden by default) -->
+            <div id="week-selector" class="hidden">
+                <!-- Back + City Label -->
+                <div class="flex items-center gap-4 mb-8">
+                    <button onclick="goBackToCities()" class="flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-500 hover:text-sky-600 hover:border-sky-300 transition-all group">
+                        <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"></i>
+                        Back
+                    </button>
+                    <div class="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-sky-50 border border-sky-200">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-sky-600"></i>
+                        <span id="selected-city-label" class="text-sm font-bold text-slate-900"></span>
+                    </div>
+                </div>
+
+                <!-- Week Cards -->
+                <div class="relative bg-white/80 backdrop-blur-xl rounded-[2rem] border border-sky-100 shadow-[0_20px_60px_-15px_rgba(14,165,233,0.08)] ring-1 ring-sky-50 overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-white via-transparent to-sky-50/30 pointer-events-none"></div>
+
+                    <div class="relative z-10 p-8 md:p-10">
+                        <div class="flex items-center justify-between mb-8">
+                            <p class="text-sm font-semibold text-slate-500">Select one or more weeks</p>
+                            <div class="flex items-center gap-3">
+                                <button onclick="selectAllWeeks()" class="text-xs font-bold text-sky-600 hover:text-sky-800 transition-colors uppercase tracking-wide">Select All</button>
+                                <span class="text-slate-300">|</span>
+                                <button onclick="clearAllWeeks()" class="text-xs font-bold text-slate-400 hover:text-slate-600 transition-colors uppercase tracking-wide">Clear</button>
+                            </div>
+                        </div>
+
+                        <div id="week-cards" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-10"></div>
+
+                        <!-- CTA -->
+                        <div id="register-cta" class="opacity-0 translate-y-4 transition-all duration-500 pointer-events-none">
+                            <div class="relative bg-sky-600 rounded-2xl p-6 md:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+                                <div>
+                                    <div class="text-sm font-bold text-white mb-1" id="cta-summary"></div>
+                                    <div class="text-xs text-sky-200" id="cta-detail"></div>
+                                </div>
+                                <a id="register-link" href="#" target="_blank" class="inline-flex items-center px-8 py-4 bg-summerYellow text-slate-900 font-bold rounded-full text-sm hover:bg-amber-400 transition-all hover:scale-[1.02] shadow-lg group shrink-0">
+                                    Register Now
+                                    <i data-lucide="arrow-right" class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- THE ALPHA DIFFERENCE – 50/50 split -->
+    <section class="relative min-h-[480px] grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
+        <!-- Left: image -->
+        <div class="relative min-h-[320px] lg:min-h-full order-2 lg:order-1">
+            <img src="img/Kids learning and collaborating at camp.png" alt="Kids learning and collaborating at camp" class="absolute inset-0 w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-sky-900/20 lg:bg-transparent"></div>
+        </div>
+        <!-- Right: text -->
+        <div class="relative flex flex-col justify-center bg-gradient-to-br from-sky-700 to-sky-900 text-white py-20 lg:py-24 px-8 lg:px-16 xl:px-24 order-1 lg:order-2">
+            <div class="text-sky-200 text-xs font-bold tracking-[0.2em] uppercase mb-4">The Alpha Difference</div>
+            <h2 class="text-3xl md:text-5xl font-bold mb-6 serif-italic leading-tight">
+                Your kid won't just "keep up."<br>
+                <span class="not-italic sans-serif">They'll get ahead.</span>
+            </h2>
+            <div class="space-y-5 text-base lg:text-lg text-sky-100/90 leading-relaxed">
+                <p>
+                    Most summer camps are glorified daycare that simply prevent "the summer slide." We'd rather your kid jump a grade level.
+                </p>
+                <p>
+                    Alpha Summer Camp isn't a watered-down version — it's Alpha in full swing. From academics to life skills to falling in love with school again, your kid will experience firsthand what sets Alpha apart.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SCHEDULE SECTION – Bento: table + activity image -->
+    <section class="py-28 relative bg-sky-50 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-sky-200/40 rounded-full blur-[160px] pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <div class="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">A Day At Camp</div>
+                <h2 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 serif-italic">Here's what it actually looks like.</h2>
+                <p class="text-slate-500 text-lg max-w-xl mx-auto">Academics done by noon. Afternoons spent building life skills that matter.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-[1fr,320px] gap-8 lg:gap-10 items-start">
+            <!-- Premium schedule card -->
+            <div class="relative bg-white/80 backdrop-blur-xl rounded-[2.5rem] border border-sky-100 shadow-[0_20px_60px_-15px_rgba(14,165,233,0.06)] ring-1 ring-sky-50 overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-white via-transparent to-sky-50/30 pointer-events-none"></div>
+                <div class="absolute inset-0 rounded-[2.5rem] shadow-[inset_0_0_60px_rgba(14,165,233,0.03)] pointer-events-none"></div>
+
+                <div class="relative z-10">
+                    <!-- Header -->
+                    <div class="flex border-b border-slate-200/60 bg-slate-50/50">
+                        <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Time</span>
+                        </div>
+                        <div class="flex-1 px-8 py-5">
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">Activity</span>
+                        </div>
+                    </div>
+
+                    <!-- Rows -->
+                    <div class="divide-y divide-slate-100">
+                        <!-- Row 1 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">9:00 AM</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="log-in" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <span class="font-bold text-slate-900">Drop-off</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 2 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">9:15 AM</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="sunrise" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-900">Morning Launch</span>
+                                    <span class="text-slate-400 ml-1 hidden sm:inline">— brain and body warm-up</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 3 (highlighted) -->
+                        <div class="group flex bg-sky-100/50 hover:bg-sky-100/70 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-sky-700 tabular-nums">9:30 – 11:00</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-sky-100 flex items-center justify-center shrink-0">
+                                    <i data-lucide="brain" class="w-4 h-4 text-sky-600"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-sky-700">Reading & Math</span>
+                                    <span class="text-slate-400 ml-1 hidden sm:inline">— personalized, AI-powered, at their own level</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 4 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">11:00 – 11:30</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="trees" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <span class="font-bold text-slate-900">Recess</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 5 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">11:30 – 12:00</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="utensils" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <span class="font-bold text-slate-900">Lunch</span>
+                            </div>
+                        </div>
+
+                        <!-- Row 6 (highlighted) -->
+                        <div class="group flex bg-amber-100/40 hover:bg-amber-100/60 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-amber-800 tabular-nums">12:00 – 3:00</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
+                                    <i data-lucide="hammer" class="w-4 h-4 text-amber-700"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-amber-800">Workshops</span>
+                                    <span class="text-slate-400 ml-1 hidden sm:inline">— woodworking, cooking, tennis, swimming, arts & crafts</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 7 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">3:00 – 3:15</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="clipboard-check" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <div>
+                                    <span class="font-bold text-slate-900">Check Chart</span>
+                                    <span class="text-slate-400 ml-1 hidden sm:inline">— kids track their own goals</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Row 8 -->
+                        <div class="group flex hover:bg-sky-50/50 transition-colors duration-300">
+                            <div class="w-40 md:w-48 shrink-0 px-8 py-5 border-r border-slate-200/60 flex items-center">
+                                <span class="text-sm font-semibold text-slate-900 tabular-nums">3:15 – 3:30</span>
+                            </div>
+                            <div class="flex-1 px-8 py-5 flex items-center gap-4">
+                                <div class="w-9 h-9 rounded-xl bg-slate-100 group-hover:bg-sky-100/50 flex items-center justify-center shrink-0 transition-colors duration-300">
+                                    <i data-lucide="party-popper" class="w-4 h-4 text-slate-400 group-hover:text-sky-600 transition-colors duration-300"></i>
+                                </div>
+                                <span class="font-bold text-slate-900">Shout-Outs & Pickup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bento: activity image card -->
+            <div class="relative rounded-[2rem] overflow-hidden border border-sky-100 shadow-soft h-full min-h-[280px] lg:min-h-[420px]">
+                <img src="img/Kids in workshop or arts activity at camp.png" alt="Kids in workshop or arts activity at camp" class="w-full h-full object-cover" />
+                <div class="absolute inset-0 bg-gradient-to-t from-sky-900/70 via-transparent to-transparent"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <span class="text-xs font-bold tracking-[0.2em] uppercase text-sky-200">Afternoon</span>
+                    <p class="font-bold text-lg mt-1">Workshops & life skills</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NO MORE SHRUGS SECTION -->
+    <section class="py-32 relative bg-gradient-to-b from-sky-500 to-sky-700 text-white overflow-hidden">
+        <!-- Premium Decorative Background Elements -->
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-sky-300/20 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div class="text-sky-200 text-xs font-bold tracking-[0.3em] uppercase mb-6">For Parents</div>
+            <h2 class="text-4xl md:text-6xl font-bold mb-8 serif-italic leading-tight">No more "how was camp?" shrugs.</h2>
+            <p class="text-sky-100/90 mb-10 max-w-3xl mx-auto leading-relaxed text-lg">
+                We know what it's like to pick your kid up and get nothing but "fine." That's not how this works. Every Friday, you'll get a real report — reading level, math progress, what they built, and what they're proud of.
+            </p>
+            <blockquote class="max-w-2xl mx-auto mb-16 text-sky-100/90 text-lg serif-italic border-l-2 border-amber-300/50 pl-6 text-left">
+                "Finally, I know exactly what my kid did all week — and where they're actually at in reading and math."
+            </blockquote>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <!-- Card 1: Friday Reports -->
+                <div class="group relative p-10 rounded-[2rem] bg-white text-slate-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-sky-100 rounded-full blur-3xl opacity-30 pointer-events-none -mr-10 -mt-10"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-sky-100 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="bar-chart-3" class="w-7 h-7 text-sky-600"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">Friday Reports</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Not a vague "your child is doing great!" email. You'll see their actual reading level, math progress, and what they built that week.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Goals -->
+                <div class="group relative p-10 rounded-[2rem] bg-white text-slate-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-amber-100 rounded-full blur-3xl opacity-30 pointer-events-none -mr-10 -mt-10"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-amber-100 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="target" class="w-7 h-7 text-amber-600"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">Goals you can track</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Where they started. Where they are. Where they're headed. In numbers, not platitudes. No more guessing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Roadmap -->
+                <div class="group relative p-10 rounded-[2rem] bg-white text-slate-900 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)] hover:-translate-y-2 transition-all duration-500 overflow-hidden">
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-emerald-100 rounded-full blur-3xl opacity-30 pointer-events-none -mr-10 -mt-10"></div>
+                    <div class="relative z-10">
+                        <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500">
+                            <i data-lucide="rocket" class="w-7 h-7 text-emerald-600"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-3">A clear roadmap</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed">
+                            Even a single week in the Alpha model gives your kid a clear picture of where they stand, what they need to work on, and where they can go from here.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAYS TO STAY INVOLVED -->
+    <section class="py-24 bg-amber-50/30">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">After Camp</div>
+            <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mb-6 serif-italic">Want to keep going? There are three ways to stay involved.</h2>
+            <p class="text-slate-500 mb-16 max-w-xl mx-auto">If your kid falls in love with Alpha, there's a path that fits for every family.</p>
+
+            <div class="grid md:grid-cols-3 gap-6 text-left">
+                <!-- Option 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_0_50px_-12px_rgba(0,0,0,0.08)] border border-slate-50 hover:border-sky-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-sky-100 flex items-center justify-center mb-6">
+                        <i data-lucide="school" class="w-6 h-6 text-sky-600"></i>
+                    </div>
+                    <span class="inline-block px-3 py-1 bg-sky-100 text-sky-700 text-[10px] font-bold uppercase tracking-wider rounded-md mb-4">Full-Time</span>
+                    <h3 class="font-bold text-xl text-slate-900 mb-4">Alpha School</h3>
+                    <p class="text-slate-600 text-sm mb-8 leading-relaxed">Ready to call Alpha home? Enroll your kid and become an official Alpha family.</p>
+                    <a href="#" class="text-sky-600 font-bold text-sm hover:opacity-70 transition-opacity">Learn more →</a>
+                </div>
+
+                <!-- Option 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_0_50px_-12px_rgba(0,0,0,0.08)] border border-slate-50 hover:border-sky-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center mb-6">
+                        <i data-lucide="laptop" class="w-6 h-6 text-amber-600"></i>
+                    </div>
+                    <span class="inline-block px-3 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold uppercase tracking-wider rounded-md mb-4">Virtual</span>
+                    <h3 class="font-bold text-xl text-slate-900 mb-4">Alpha Anywhere</h3>
+                    <p class="text-slate-600 text-sm mb-8 leading-relaxed">Want Alpha academics from your kitchen table? Sign up for Alpha Anywhere, the virtual Alpha program that's changing the game for homeschool families.</p>
+                    <a href="#" class="text-sky-600 font-bold text-sm hover:opacity-70 transition-opacity">Learn more →</a>
+                </div>
+
+                <!-- Option 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-[0_0_50px_-12px_rgba(0,0,0,0.08)] border border-slate-50 hover:border-sky-200 hover:-translate-y-1 transition-all duration-300">
+                    <div class="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center mb-6">
+                        <i data-lucide="moon" class="w-6 h-6 text-summerCoral"></i>
+                    </div>
+                    <span class="inline-block px-3 py-1 bg-summerCoral/10 text-summerCoral text-[10px] font-bold uppercase tracking-wider rounded-md mb-4">After School</span>
+                    <h3 class="font-bold text-xl text-slate-900 mb-4">Nights & Weekends</h3>
+                    <p class="text-slate-600 text-sm mb-8 leading-relaxed">Not quite ready to leave your current school? Join Alpha's Nights & Weekends program, where your kid can join in on Alpha's workshops and community.</p>
+                    <a href="#" class="text-sky-600 font-bold text-sm hover:opacity-70 transition-opacity">Learn more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER – brand blue rgb(30 0 255) -->
+    <footer class="relative bg-gradient-to-b from-[rgb(30,0,255)] to-alphaDark text-white pt-20 pb-32 text-center overflow-hidden">
+        <!-- Wave divider above footer -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-none pointer-events-none">
+            <svg class="relative block w-full h-12 md:h-16" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path fill="rgb(30,0,255)" d="M0,64 C300,120 600,0 900,64 C1050,92 1150,92 1200,64 L1200,120 L0,120 Z"></path>
+            </svg>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 serif-italic leading-tight">One week. <span class="not-italic sans-serif italic opacity-90">That's all it<br>takes.</span></h2>
+            <p class="text-white/80 text-lg mb-12 max-w-xl mx-auto">Your kid arrives Monday. By Friday, you'll know: "Is Alpha right for my kid?"</p>
+            
+            <a href="#locations" class="inline-flex items-center px-10 py-5 bg-white text-alphaBlue font-bold rounded-full text-lg hover:bg-slate-100 transition-transform hover:-translate-y-1 shadow-lg group">
+                Come Experience Alpha
+                <i data-lucide="arrow-right" class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            
+            <div class="mt-24 pt-10 border-t border-white/20 text-white/70 text-sm italic serif-italic">
+                The only school kids love more than vacation. Now in summer form.
+            </div>
         </div>
     </footer>
+    
+    {{ standard_footer_includes }}
 
-</body>
+    <script>
+        lucide.createIcons();
+
+        (function() {
+            var nav = document.getElementById('main-nav');
+            if (nav) {
+                function updateNav() {
+                    nav.classList.toggle('shadow-md', window.scrollY > 60);
+                }
+                window.addEventListener('scroll', updateNav, { passive: true });
+                updateNav();
+            }
+        })();
+
+        const campData = [
+            { state: "Arizona", city: "Scottsdale", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "East Bay", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "Lake Forest", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "Palo Alto", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "San Francisco", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "Santa Barbara", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "California", city: "Santa Monica", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Colorado", city: "Denver", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Florida", city: "Fort Lauderdale", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Florida", city: "Miami", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Florida", city: "Orlando", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Florida", city: "Palm Beach", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Florida", city: "Tampa", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Georgia", city: "Atlanta", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Illinois", city: "Chicago", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Massachusetts", city: "Boston", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "New York", city: "Hamptons", weeks: ["Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "North Carolina", city: "Charlotte", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "North Carolina", city: "Raleigh", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Oregon", city: "Portland", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Puerto Rico", city: "Dorado", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Tennessee", city: "Nashville", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Texas", city: "Austin", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Texas", city: "Fort Worth", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Texas", city: "Plano / Dallas", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Texas", city: "The Woodlands", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Utah", city: "Salt Lake City", weeks: ["Week 1: June 8 - June 12","Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Virginia", city: "Chantilly", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Washington", city: "Kirkland", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+            { state: "Washington", city: "Seattle", weeks: ["Week 2: June 15 - June 19","Week 3: June 22 - June 26","Week 4: June 29 - July 3","Week 5: July 6 - July 10","Week 6: July 13 - July 17","Week 7: July 20 - July 24"] },
+        ];
+
+        const stateAbbr = { Arizona:'AZ', California:'CA', Colorado:'CO', Florida:'FL', Georgia:'GA', Illinois:'IL', Massachusetts:'MA', 'New York':'NY', 'North Carolina':'NC', Oregon:'OR', 'Puerto Rico':'PR', Tennessee:'TN', Texas:'TX', Utah:'UT', Virginia:'VA', Washington:'WA' };
+
+        let selectedCity = null;
+        let selectedWeeks = new Set();
+        let activeState = 'All';
+
+        function getStates() {
+            return [...new Set(campData.map(c => c.state))].sort();
+        }
+
+        function renderStateDropdown() {
+            const select = document.getElementById('state-filter');
+            const states = getStates();
+            let html = '<option value="All">All States</option>';
+            states.forEach(s => {
+                const count = campData.filter(c => c.state === s).length;
+                html += `<option value="${s}" ${activeState === s ? 'selected' : ''}>${s} (${count})</option>`;
+            });
+            select.innerHTML = html;
+        }
+
+        function filterByState(state) {
+            activeState = state;
+            document.getElementById('city-search').value = '';
+            renderCities();
+        }
+
+        function renderCities() {
+            const container = document.getElementById('city-grid');
+            const noResults = document.getElementById('no-results');
+            const query = document.getElementById('city-search').value.toLowerCase().trim();
+
+            let filtered = campData;
+            if (activeState !== 'All') {
+                filtered = filtered.filter(c => c.state === activeState);
+            }
+            if (query) {
+                filtered = filtered.filter(c =>
+                    c.city.toLowerCase().includes(query) || c.state.toLowerCase().includes(query)
+                );
+            }
+
+            if (!filtered.length) {
+                container.innerHTML = '';
+                noResults.classList.remove('hidden');
+                lucide.createIcons();
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            let html = '';
+            filtered.forEach(c => {
+                const abbr = stateAbbr[c.state] || c.state;
+                html += `<button onclick="selectCity('${c.state}','${c.city.replace(/'/g, "\\'")}')"
+                    class="group relative bg-white rounded-xl border border-slate-200 p-4 text-left hover:border-sky-400 hover:bg-sky-50/50 hover:shadow-[0_8px_30px_-8px_rgba(14,165,233,0.15)] transition-all duration-300 hover:-translate-y-0.5">
+                    <div class="font-semibold text-sm text-slate-900 group-hover:text-sky-600 transition-colors mb-1">${c.city}</div>
+                    <div class="text-[11px] text-slate-400 font-medium">${abbr} · ${c.weeks.length} weeks</div>
+                </button>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function selectCity(state, city) {
+            selectedCity = campData.find(c => c.state === state && c.city === city);
+            selectedWeeks.clear();
+            if (!selectedCity) return;
+
+            document.getElementById('city-selector').classList.add('hidden');
+            document.getElementById('week-selector').classList.remove('hidden');
+            document.getElementById('selected-city-label').textContent = `${city}, ${state}`;
+
+            renderWeeks();
+            updateCTA();
+            lucide.createIcons();
+
+            document.getElementById('locations').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function renderWeeks() {
+            const container = document.getElementById('week-cards');
+            let html = '';
+
+            selectedCity.weeks.forEach((week, i) => {
+                const parts = week.split(': ');
+                const label = parts[0];
+                const dates = parts[1];
+
+                html += `<button onclick="toggleWeek(this, ${i})" data-week="${i}"
+                    class="week-card group relative p-5 rounded-2xl border-2 border-slate-200 bg-white text-left transition-all duration-300 hover:border-sky-300 hover:shadow-[0_4px_20px_-4px_rgba(14,165,233,0.1)]">
+                    <div class="flex items-start justify-between mb-3">
+                        <span class="inline-block px-2.5 py-1 rounded-lg bg-slate-100 text-[11px] font-bold text-slate-500 uppercase tracking-wider group-[.active]:bg-sky-100 group-[.active]:text-sky-700 transition-colors">${label}</span>
+                        <div class="w-5 h-5 rounded-md border-2 border-slate-300 flex items-center justify-center transition-all group-[.active]:border-sky-500 group-[.active]:bg-sky-500">
+                            <svg class="w-3 h-3 text-white opacity-0 group-[.active]:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </div>
+                    </div>
+                    <div class="text-sm font-semibold text-slate-900 group-[.active]:text-sky-700 transition-colors">${dates}</div>
+                </button>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function toggleWeek(el, index) {
+            if (selectedWeeks.has(index)) {
+                selectedWeeks.delete(index);
+                el.classList.remove('active', 'border-sky-500', 'bg-sky-50/50');
+                el.classList.add('border-slate-200', 'bg-white');
+            } else {
+                selectedWeeks.add(index);
+                el.classList.add('active', 'border-sky-500', 'bg-sky-50/50');
+                el.classList.remove('border-slate-200', 'bg-white');
+            }
+            updateCTA();
+        }
+
+        function selectAllWeeks() {
+            document.querySelectorAll('.week-card').forEach((el, i) => {
+                selectedWeeks.add(i);
+                el.classList.add('active', 'border-sky-500', 'bg-sky-50/50');
+                el.classList.remove('border-slate-200', 'bg-white');
+            });
+            updateCTA();
+        }
+
+        function clearAllWeeks() {
+            selectedWeeks.clear();
+            document.querySelectorAll('.week-card').forEach(el => {
+                el.classList.remove('active', 'border-sky-500', 'bg-sky-50/50');
+                el.classList.add('border-slate-200', 'bg-white');
+            });
+            updateCTA();
+        }
+
+        function updateCTA() {
+            const cta = document.getElementById('register-cta');
+            const summary = document.getElementById('cta-summary');
+            const detail = document.getElementById('cta-detail');
+            const link = document.getElementById('register-link');
+            const count = selectedWeeks.size;
+
+            if (count > 0) {
+                cta.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                cta.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+
+                const weekLabels = [...selectedWeeks].sort().map(i => selectedCity.weeks[i].split(':')[0]).join(', ');
+                summary.textContent = `${count} week${count > 1 ? 's' : ''} selected in ${selectedCity.city}`;
+                detail.textContent = weekLabels;
+
+                const params = new URLSearchParams({
+                    city: selectedCity.city,
+                    state: selectedCity.state,
+                    weeks: [...selectedWeeks].sort().map(i => selectedCity.weeks[i].split(':')[0]).join(',')
+                });
+                link.href = `https://go.alpha.school/summer-camp-register?${params.toString()}`;
+            } else {
+                cta.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                cta.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        }
+
+        function goBackToCities() {
+            document.getElementById('week-selector').classList.add('hidden');
+            document.getElementById('city-selector').classList.remove('hidden');
+            selectedCity = null;
+            selectedWeeks.clear();
+
+            document.getElementById('locations').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        document.getElementById('city-search').addEventListener('input', function() {
+            if (this.value.trim()) {
+                activeState = 'All';
+                document.getElementById('state-filter').value = 'All';
+            }
+            renderCities();
+        });
+
+        renderStateDropdown();
+        renderCities();
+    </script>
+  </body>
 </html>
